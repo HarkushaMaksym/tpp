@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit planet</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Edit planet</h1>
+        <form th:action="@{/planets/add}" th:object="${planet}" method="post" class="form-container">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required />
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></div>
+        
+            <label for="description">Description:</label>
+            <textarea id="description" th:field="*{description}" required></textarea>
+            <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"></div>
+        
+            <button type="submit" class="button">Save</button>
+        </form>
+        <a href="/planets" class="button back">Back to planets</a>
+    </div>
+</body>
+</html>

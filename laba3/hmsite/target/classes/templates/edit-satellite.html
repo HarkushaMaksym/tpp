@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit satellite</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit satellite</h1>
+
+        <form th:action="@{/satellites/update/{id}(id=${satellite.id})}"
+        th:object="${satellite}"
+        method="post"
+        class="form-container">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required />
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></div>
+
+            <label for="description">Description:</label>
+            <textarea id="description" th:field="*{description}" required></textarea>
+            <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"></div>
+
+            <label for="planet">Planet:</label>
+            <select id="planet" th:field="*{planet}" required>
+                <option th:each="p : ${planets}"
+                        th:value="${p}"
+                        th:text="${p.name}">
+                </option>
+            </select>
+
+            <button type="submit" class="button">Save</button>
+        </form>
+
+        <a href="/satellites" class="button back">Back to satellites</a>
+    </div>
+</body>
+</html>

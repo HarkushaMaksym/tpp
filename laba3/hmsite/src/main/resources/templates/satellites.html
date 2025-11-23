@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Satellites</title>
+</head>
+<body>
+    <h1>Satellites</h1>
+
+    <a th:href="@{/satellites/add}" class="button">Add a satellite</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Planet</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="satellite : ${satellites}">
+            <td th:text="${satellite.id}"></td>
+            <td th:text="${satellite.name}"></td>
+            <td th:text="${satellite.description}"></td>
+            <td th:text="${satellite.planet.name}"></td>
+
+            <td>
+                <a th:href="@{/satellites/edit/{id}(id=${satellite.id})}" class="button edit">Edit</a>
+                <a th:href="@{/satellites/delete/{id}(id=${satellite.id})}" class="button delete">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/home}" class="button back">Back to homepage</a>
+</body>
+</html>
