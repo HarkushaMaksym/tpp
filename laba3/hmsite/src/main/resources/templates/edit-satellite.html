@@ -23,7 +23,7 @@
             <label for="planet">Planet:</label>
             <select id="planet" th:field="*{planet}" required>
                 <option th:each="p : ${planets}"
-                        th:value="${p}"
+                        th:value="${p.id}"
                         th:text="${p.name}">
                 </option>
             </select>
