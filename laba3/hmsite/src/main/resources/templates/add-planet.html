@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Edit planet</title>
+    <title>Add planet</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
     <div class="container">
-        <h1>Edit planet</h1>
+        <h1>Add planet</h1>
         <form th:action="@{/planets/add}" th:object="${planet}" method="post" class="form-container">
             <label for="name">Name:</label>
             <input type="text" id="name" th:field="*{name}" required />
