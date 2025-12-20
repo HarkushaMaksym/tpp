@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Planets</title>
+</head>
+<body>
+
+        <h1>Planets</h1>
+        <a th:href="@{/planets/add}" class="button">Add a planet</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="planet,iterStat : ${planets}">
+                    <td th:text="${iterStat.index + 1}"></td>
+                    
+                    <td th:text="${planet.name}"></td>
+                    <td th:text="${planet.description}"></td>
+                    <td>
+                        <a th:href="@{/planets/edit/{id}(id=${planet.id})}" class="button edit">Edit</a>
+                        <a th:href="@{/planets/delete/{id}(id=${planet.id})}" class="button delete">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/home}" class="button back">Back to homepage</a>
+    </div>
+</body>
+</html>
